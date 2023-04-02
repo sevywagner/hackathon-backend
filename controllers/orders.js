@@ -1,5 +1,20 @@
+const Order = require('./../models/order');
+
 exports.postOrder = (req, res, next) => {
-    res.status(200).json({
-        message: 'Success'
+    const name = req.body.name;
+    const address = req.body.address;
+    const bloodAmount = req.body.amount;
+    const payout = req.body.payout;
+
+    const order = new Order(name, address, bloodAmount, payout);
+    order.save().then(() => {
+        res.status(201).json({
+            message: 'Successfully placed order'
+        });
+    }).catch((err) => {
+        if (!err.satusCode) {
+            err.satusCode = 500;
+        }
+        next(err);
     });
 }

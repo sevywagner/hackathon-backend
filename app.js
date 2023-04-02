@@ -32,6 +32,12 @@ const orderRouter = require('./routes/orders');
 
 app.use(orderRouter);
 
+app.use((error, req, res, next) => {
+    res.status(error.statusCode).json({
+        error: error.message
+    });
+})
+
 mongoConnect(() => {
     app.listen(process.env.PORT || 8080);
 });
