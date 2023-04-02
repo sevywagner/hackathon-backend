@@ -1,4 +1,5 @@
 const { createTransport } = require('nodemailer');
+const { validationResult } = require('express-validator')
 
 const transport = createTransport({
     host: 'smtp.gmail.com',
@@ -11,9 +12,17 @@ const transport = createTransport({
 });
 
 exports.postContact = (req, res, next) => {
-    const name = req.body.name;
     const email = req.body.email;
     const message = req.body.message;
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        const error = new Error(errors.array()[0].msg);
+        error.statusCode = 422;
+        console.log(error.message);
+        throw error;
+    }
 
     transport.sendMail({
         from: email,

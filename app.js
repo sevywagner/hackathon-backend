@@ -34,11 +34,11 @@ const contactRouter = require('./routes/contact');
 app.use(orderRouter);
 app.use(contactRouter);
 
-// app.use((error, req, res, next) => {
-//     res.status(error.statusCode).json({
-//         error: error.message
-//     });
-// })
+app.use((error, req, res, next) => {
+    res.status(error.statusCode).json({
+        error: error.message
+    });
+})
 
 mongoConnect(() => {
     app.listen(process.env.PORT || 8080);
