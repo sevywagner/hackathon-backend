@@ -20,8 +20,6 @@ exports.postOrder = (req, res, next) => {
     }
 
     const order = new Order(name, address, email, date, time, bloodAmount, payout);
-    const timeStamp = new TimeStamp(date, time);
-
     order.save().then(() => {
         res.status(201).json({
             message: 'Successfully placed order'
@@ -34,7 +32,7 @@ exports.postOrder = (req, res, next) => {
     });
 }
 
-exports.getTimeStamps = (req, res, next) => {
+exports.getOrders = (req, res, next) => {
     TimeStamp.fetchTimeStamps().then((stamps) => {
         if (!stamps) {
             const error = new Error('Error fetching stamps');
