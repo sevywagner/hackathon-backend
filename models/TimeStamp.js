@@ -8,12 +8,12 @@ class TimeStamp {
 
     save() {
         const db = getDb();
-        return db.collection('TimeStamps').insertOne(this);
+        return db.collection('timestamps').insertOne(this);
     }
 
     static fetchTimeStamps() {
         const db = getDb();
-        return db.collection('TimeStamps').find().toArray();
+        return db.collection('timestamps').find().toArray();
     }
 }
 
