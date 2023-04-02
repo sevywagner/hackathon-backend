@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 const compression = require('compression');
+const helmet = require('helmet');
 
 const mongoConnect = require('./util/database').mongoConnect;
 
@@ -28,7 +29,6 @@ app.use(compression());
 app.use(morgan('combined', { stream: accessLogStream }));
 
 const orderRouter = require('./routes/orders');
-const { default: helmet } = require('helmet');
 
 app.use(orderRouter);
 

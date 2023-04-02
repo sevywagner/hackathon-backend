@@ -1,0 +1,1 @@
+::1 - - [02/Apr/2023:01:21:44 +0000] "POST /orders HTTP/1.1" 200 21 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
