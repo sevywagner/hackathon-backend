@@ -12,9 +12,6 @@ exports.postOrder = (req, res, next) => {
             message: 'Successfully placed order'
         });
     }).catch((err) => {
-        if (!err.satusCode) {
-            err.satusCode = 500;
-        }
-        next(err);
+        console.log(err);
     });
 }
