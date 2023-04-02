@@ -4,11 +4,12 @@ const { body } = require('express-validator');
 const orderController = require('./../controllers/orders');
 
 router.post('/orders', [
-    body('time').isLength({ min: 3 }).withMessage('Please enter a time'),
     body('name').isLength({ min: 2 }).withMessage('Please enter your name'),
     body('email').isEmail().withMessage('Please enter a valid email'),
     body('address').isLength({ min: 6 }).withMessage('Please enter your address'),
     body('amount').notEmpty().withMessage('Please choose an amount to donate')
 ], orderController.postOrder);
+
+router.get('/time-stamps', orderController.getTimeStamps);
 
 module.exports = router;

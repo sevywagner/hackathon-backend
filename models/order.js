@@ -1,4 +1,4 @@
-const getDb = require('./../util/database').getDb;
+const getDb = require('../util/database').getDb;
 
 class Order {
     constructor(name, address, email, date, time, bloodAmount, payout) {
