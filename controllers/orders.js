@@ -23,15 +23,8 @@ exports.postOrder = (req, res, next) => {
     const timeStamp = new TimeStamp(date, time);
 
     order.save().then(() => {
-        timeStamp.save().then(() => {
-            res.status(201).json({
-                message: 'Successfully placed order'
-            });
-        }).catch((err) => {
-            if (!err.statusCode) {
-                err.statusCode = 500;
-            }
-            next(err);
+        res.status(201).json({
+            message: 'Successfully placed order'
         });
     }).catch((err) => {
         if (!err.statusCode) {
