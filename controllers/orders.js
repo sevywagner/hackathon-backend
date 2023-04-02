@@ -1,7 +1,4 @@
-exports.putOrder = (req, res, next) => {
-    const name = req.body.name;
-
-    console.log(name);
+exports.postOrder = (req, res, next) => {
     res.status(200).json({
         message: 'Success'
     });
