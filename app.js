@@ -29,8 +29,10 @@ app.use(compression());
 app.use(morgan('combined', { stream: accessLogStream }));
 
 const orderRouter = require('./routes/orders');
+const contactRouter = require('./routes/contact');
 
 app.use(orderRouter);
+app.use(contactRouter);
 
 // app.use((error, req, res, next) => {
 //     res.status(error.statusCode).json({
